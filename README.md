@@ -16,7 +16,6 @@ Hosting this source code will expose your Google Maps API key, which is unavoida
 
 - Switch metric / imperial units
 - Countdown timer
-- Adjust map radius slider
 - Fix mobile view
 
 ## Credits
