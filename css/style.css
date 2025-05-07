@@ -81,3 +81,8 @@ body {
 .modal-backdrop {
     z-index: 10000;        
 }
+
+#sizeInput {
+    position: relative;
+    top: 3px;
+}

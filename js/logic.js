@@ -6,6 +6,7 @@ let allowMarkerSet = true;
 let dottedLine;
 let sv;
 let pointOfOrigin = { lat: 48.137154, lng: 11.576124 };
+let size = 13;
 
 const winPhrases = [
     "You nailed it!",
@@ -185,6 +186,7 @@ function initialize() { // Initialize
 
     const cityInput = document.getElementById('cityInput');
     const autocomplete = new google.maps.places.Autocomplete(cityInput);
+    const sizeInput = document.getElementById('sizeInput');
 
     autocomplete.setTypes(['(cities)']);
     autocomplete.addListener('place_changed', () => {
@@ -208,10 +210,15 @@ function initialize() { // Initialize
         }
     });
 
+    sizeInput.addEventListener('change', (e) => {
+        size = parseInt(sizeInput.value);
+        resetGame();
+    });
+
 
     map = new google.maps.Map(document.getElementById("map"), { // Initialize map
         center: pointOfOrigin,
-        zoom: 14,
+        zoom: size,
         streetViewControl: false,
         mapId: 'd4fe02c4af5e4ff6',
         mapTypeId: google.maps.MapTypeId.SATELLITE,
@@ -300,7 +307,7 @@ function resetGame() { // Reset game
     }
 
     map.panTo(pointOfOrigin);
-    map.setZoom(14);
+    map.setZoom(size);
 
     const cornerCoordinates = getCityCornerCoordinates(pointOfOrigin);
     const bounds = new google.maps.LatLngBounds();
